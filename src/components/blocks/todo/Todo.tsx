@@ -1,9 +1,6 @@
-import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useTodos} from '../../../hooks/useTodos';
-import {ITodos} from '../../../types/types';
 import {NewTodo} from '../../new-todo/NewTodo';
-
 import {TodoList} from '../../todo-list/TodoList';
 import './style.css';
 

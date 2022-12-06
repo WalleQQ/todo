@@ -1,4 +1,3 @@
-import axios from 'axios';
 import {useEffect, useState} from 'react';
 import {ITodos} from '../types/types';
 import {dbInstance} from '../utils/axios';
