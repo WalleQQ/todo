@@ -14,21 +14,23 @@ export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
   const {postTodo} = useTodos();
   const [todo, setTodo] = useState({title: '', text: '', id: '', url: ''});
   const [date, setDate] = useState('');
-  const [fileUpload, setFileUpload] = useState<any>();
+  const [fileUpload, setFileUpload] = useState<File | undefined>();
   const [valid, setValid] = useState(true);
 
   const uploadFile = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
 
-    const path = `files/${Date.now() + fileUpload.name}`;
-    const storageRef = ref(storage, path);
-    const upload = uploadBytesResumable(storageRef, fileUpload);
+    if (fileUpload && fileUpload.name) {
+      const path = `files/${Date.now() + fileUpload.name}`;
+      const storageRef = ref(storage, path);
+      const upload = uploadBytesResumable(storageRef, fileUpload);
 
-    upload.on('state_changed', () => {
-      getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
-        setTodo({...todo, url: downloadURL});
+      upload.on('state_changed', () => {
+        getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
+          setTodo({...todo, url: downloadURL});
+        });
       });
-    });
+    }
   };
 
   const addNewTodo = (evt: React.FormEvent<HTMLInputElement>) => {
@@ -77,8 +79,7 @@ export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
           <input
             className='new-todo__file'
             type='file'
-            // @ts-ignore
-            onChange={(evt) => setFileUpload(evt.target.files[0])}
+            onChange={(evt) => setFileUpload(evt.target?.files?.[0])}
           />
           <button
             type='button'
@@ -91,7 +92,7 @@ export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
 
         <input
           value='Добавить задачу'
-          className='btn'
+          className='btn new-todo__submit'
           type='submit'
           onClick={addNewTodo}
         />
