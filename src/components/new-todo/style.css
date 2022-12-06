@@ -1,0 +1,54 @@
+.new-todo {
+  padding: 6px;
+}
+
+.new-todo input,
+.new-todo textarea {
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.new-todo__input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 6px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+}
+
+.new-todo__date {
+  padding: 6px;
+  margin-bottom: 6px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+}
+
+.new-todo__file {
+  display: block;
+}
+
+.new-todo__file::-webkit-file-upload-button {
+  background-color: transparent;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.new-todo__invalid {
+  color: #e06666;
+}
+
+.new-todo input:focus,
+.new-todo textarea:focus {
+  outline-color: #33c2d8;
+}
+
+.new-todo__file-btn {
+  margin: 0;
+  margin-top: 6px;
+  background-color: transparent;
+  border: 1px solid #dddddd;
+}

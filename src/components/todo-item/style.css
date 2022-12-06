@@ -1,0 +1,82 @@
+.todo__item {
+  min-height: 35px;
+
+  border-bottom: 1px dashed #dddddd;
+  padding: 6px 6px;
+}
+
+.todo__item:first-of-type {
+  border-top: 1px dashed #dddddd;
+}
+
+.todo__item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.todo__item input,
+.todo__item textarea {
+  display: block;
+  padding: 6px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+}
+
+.todo__item input:last-of-type,
+.todo__item textarea:last-of-type {
+  margin-bottom: 0;
+}
+
+.todo__item input:focus,
+.todo__item textarea:focus {
+  outline-color: #33c2d8;
+}
+
+.todo__item-title::placeholder,
+.todo__item-text::placeholder,
+.todo__item-date::placeholder {
+  font-weight: 400;
+  opacity: 0.3;
+}
+
+.todo__item-form {
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content repeat(2, auto);
+  gap: 2px;
+  justify-items: baseline;
+  align-items: baseline;
+  padding-left: 20px;
+}
+
+.todo__item-title {
+  font-weight: 600;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.todo__item-text {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.todo__item-date {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.todo__item-remove {
+  grid-column: -1;
+  grid-row: 1;
+}
+
+.todo__item-completed {
+  grid-column: -1;
+  grid-row: 2;
+}
+
+.todo__item-error {
+  color: #e06666;
+}
