@@ -11,7 +11,7 @@ interface NewTodoProps {
 }
 
 export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
-  const {postTodo} = useTodos();
+  const {postTodo, error} = useTodos();
   const [todo, setTodo] = useState({title: '', text: '', id: '', url: ''});
   const [date, setDate] = useState('');
   const [fileUpload, setFileUpload] = useState<File | undefined>();
@@ -27,6 +27,7 @@ export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
 
       upload.on('state_changed', () => {
         getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
           setTodo({...todo, url: downloadURL});
         });
       });
@@ -102,6 +103,8 @@ export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
         ) : (
           ''
         )}
+
+        {error ? <p className='error'>Ошибка отправки</p> : ''}
       </form>
     </div>
   );

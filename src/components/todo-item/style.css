@@ -67,6 +67,17 @@
   grid-row: 1;
 }
 
+.todo__item-file {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.todo__item-error {
+  grid-column: 2;
+  grid-row: 2;
+  color: #e06666;
+}
+
 .todo__item-remove {
   grid-column: -1;
   grid-row: 1;
@@ -75,8 +86,4 @@
 .todo__item-completed {
   grid-column: -1;
   grid-row: 2;
-}
-
-.todo__item-error {
-  color: #e06666;
 }

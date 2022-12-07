@@ -73,3 +73,8 @@ select {
 .btn:hover {
   opacity: 0.7;
 }
+
+.error {
+  text-align: center;
+  color: #e06666;
+}

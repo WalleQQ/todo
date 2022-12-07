@@ -15,7 +15,6 @@ export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
     text: item.text,
     date: item?.date || '',
   });
-  const [showFile, setShowFile] = useState(false);
 
   const editTodo = (id: string | undefined, todo: object) => {
     patchTodo(id, todo);
@@ -63,17 +62,13 @@ export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
           }
         />
 
-        <div className='todo__item-files'>
-          <button
-            onClick={(evt) => {
-              evt.preventDefault();
-              setShowFile(!showFile);
-            }}
-          >
-            Показать файл
-          </button>
-          {showFile ? <span>loh</span> : ''}
-        </div>
+        {item.url !== '' ? (
+          <a className='todo__item-file' target='_blank' href={item.url}>
+            Посмотреть файл
+          </a>
+        ) : (
+          ''
+        )}
 
         {Date.now() > todo.date ? (
           <p className='todo__item-error'>Задача просрочена</p>
