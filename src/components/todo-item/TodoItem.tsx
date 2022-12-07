@@ -54,6 +54,7 @@ export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
         />
 
         <input
+          className='todo__item-date'
           type='date'
           defaultValue={formatDate()}
           onChange={(evt) => setTodo({...todo, date: evt.target.value})}
