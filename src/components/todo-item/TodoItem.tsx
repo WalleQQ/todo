@@ -63,7 +63,12 @@ export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
         />
 
         {item.url !== '' ? (
-          <a className='todo__item-file' target='_blank' href={item.url}>
+          <a
+            className='todo__item-file'
+            target='_blank'
+            rel='noreferrer'
+            href={item.url}
+          >
             Посмотреть файл
           </a>
         ) : (
