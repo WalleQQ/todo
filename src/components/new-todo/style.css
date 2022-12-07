@@ -21,7 +21,14 @@
   padding: 6px;
   margin-bottom: 6px;
   border: 1px solid #dddddd;
+  background-color: #ffffff;
   border-radius: 3px;
+}
+
+.new-todo__file-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 280px;
 }
 
 .new-todo__file {
@@ -47,8 +54,13 @@
 }
 
 .new-todo__file-btn {
-  margin: 0;
-  margin-top: 6px;
+  margin: 6px 0;
   background-color: transparent;
   border: 1px solid #dddddd;
+}
+
+@media (max-width: 767px) {
+  .new-todo__submit {
+    margin: 0 auto;
+  }
 }
