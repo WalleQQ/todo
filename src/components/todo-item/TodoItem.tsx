@@ -5,11 +5,11 @@ import './style.css';
 
 interface TodoItemProps {
   item: ITodos;
-  removeTodo: (id: string | undefined, todo: ITodos) => void;
+  // removeTodo: (id: string | undefined, todo: ITodos) => void;
 }
 
-export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
-  const {patchTodo} = useTodos();
+export const TodoItem: FC<TodoItemProps> = ({item}) => {
+  const {patchTodo, removeTodo} = useTodos();
   const [todo, setTodo] = useState({
     title: item.title,
     text: item.text,
@@ -24,8 +24,8 @@ export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
     return num.toString().padStart(2, '0');
   }
 
-  function formatDate() {
-    const date = new Date(todo.date);
+  function formatDate(value: number) {
+    const date = new Date(value);
     return [
       date.getFullYear(),
       padTo2Digits(date.getMonth() + 1),
@@ -56,7 +56,7 @@ export const TodoItem: FC<TodoItemProps> = ({item, removeTodo}) => {
         <input
           className='todo__item-date'
           type='date'
-          defaultValue={formatDate()}
+          defaultValue={formatDate(todo.date as number)}
           onChange={(evt) => setTodo({...todo, date: evt.target.value})}
           onBlur={(evt) =>
             editTodo(item.id, {...todo, date: Date.parse(evt.target.value)})

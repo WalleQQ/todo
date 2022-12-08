@@ -5,12 +5,12 @@ import {TodoList} from '../../todo-list/TodoList';
 import './style.css';
 
 export const Todo = () => {
-  const {todos, setTodos, removeTodo} = useTodos();
+  const {todos} = useTodos();
 
   return (
     <section className='todo'>
-      <NewTodo todos={todos} setTodos={setTodos} />
-      <TodoList removeTodo={removeTodo} todos={todos} />
+      <NewTodo />
+      <TodoList />
     </section>
   );
 };

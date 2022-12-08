@@ -6,12 +6,12 @@ import {storage} from '../../firebase';
 import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
 
 interface NewTodoProps {
-  todos: ITodos[] | [];
-  setTodos: (todos: ITodos[] | []) => void;
+  // todos: ITodos[] | [];
+  // setTodos: (todos: ITodos[] | []) => void;
 }
 
-export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
-  const {postTodo, error} = useTodos();
+export const NewTodo: FC<NewTodoProps> = () => {
+  const {postTodo, error, todos, setTodos} = useTodos();
   const [todo, setTodo] = useState({title: '', text: '', id: '', url: ''});
   const [date, setDate] = useState('');
   const [fileUpload, setFileUpload] = useState<File | undefined>();
@@ -45,7 +45,7 @@ export const NewTodo: FC<NewTodoProps> = ({todos, setTodos}) => {
       return;
     }
 
-    setTodos([...todos, {...todo, date: Date.parse(date)}]);
+    // setTodos([...todos, {...todo, date: Date.parse(date)}]);
     postTodo({...todo, date: Date.parse(date)});
     setTodo({title: '', text: '', id: '', url: ''});
     setDate('');

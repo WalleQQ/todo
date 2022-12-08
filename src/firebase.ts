@@ -1,16 +1,17 @@
 import {initializeApp} from 'firebase/app';
 import {getStorage} from 'firebase/storage';
 
+console.log('process.env.REACT_APP_APP_ID', process.env.REACT_APP_APP_ID);
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyBwd8V0GH_9OYT2dxHwxfxqVUu2QF_BfBI',
-  authDomain: 'todo-bdb8e.firebaseapp.com',
-  databaseURL:
-    'https://todo-bdb8e-default-rtdb.europe-west1.firebasedatabase.app',
-  projectId: 'todo-bdb8e',
-  storageBucket: 'todo-bdb8e.appspot.com',
-  messagingSenderId: '223481973530',
-  appId: '1:223481973530:web:e3a867408053baecb13aa3',
-  measurementId: 'G-DZVLE5S8T8',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATA_BASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
