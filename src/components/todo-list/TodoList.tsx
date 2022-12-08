@@ -5,12 +5,12 @@ import {TodoItem} from '../todo-item/TodoItem';
 import './style.css';
 
 interface TodoListProps {
-  todos: ITodos[];
-  removeTodo: (id: string | undefined, todo: ITodos) => void;
+  // todos: ITodos[];
+  // removeTodo: (id: string | undefined, todo: ITodos) => void;
 }
 
-export const TodoList: FC<TodoListProps> = ({todos, removeTodo}) => {
-  const {loading, error} = useTodos();
+export const TodoList: FC<TodoListProps> = () => {
+  const {loading, error, todos} = useTodos();
 
   if (error) {
     return <p className='error'>Ошибка загрузки</p>;
@@ -20,7 +20,7 @@ export const TodoList: FC<TodoListProps> = ({todos, removeTodo}) => {
       {!loading ? (
         <ul className='todo__list'>
           {todos.map((item) => (
-            <TodoItem removeTodo={removeTodo} key={item.id} item={item} />
+            <TodoItem key={item.id} item={item} />
           ))}
         </ul>
       ) : (
