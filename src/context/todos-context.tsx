@@ -29,7 +29,7 @@ const TodosProvider: React.FC<TodosProviderProps> = ({children}) => {
       setTodos(result);
     };
     fetchTodos();
-  }, []);
+  }, [userId]);
 
   const createTodo = async (todo: ITodos) => {
     const newTodo: ITodos = {
