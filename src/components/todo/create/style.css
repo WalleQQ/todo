@@ -1,15 +1,15 @@
-.new-todo {
+.create-todo {
   padding: 6px;
 }
 
-.new-todo input,
-.new-todo textarea {
+.create-todo input,
+.create-todo textarea {
   font-family: inherit;
   font-size: 16px;
   line-height: 24px;
 }
 
-.new-todo__input {
+.create-todo__input {
   width: 100%;
   padding: 6px;
   margin-bottom: 6px;
@@ -17,7 +17,7 @@
   border-radius: 3px;
 }
 
-.new-todo__date {
+.create-todo__date {
   padding: 6px;
   margin-bottom: 6px;
   border: 1px solid #dddddd;
@@ -25,17 +25,17 @@
   border-radius: 3px;
 }
 
-.new-todo__file-wrapper {
+.create-todo__file-wrapper {
   display: flex;
   flex-wrap: wrap;
   max-width: 280px;
 }
 
-.new-todo__file {
+.create-todo__file {
   display: block;
 }
 
-.new-todo__file::-webkit-file-upload-button {
+.create-todo__file::-webkit-file-upload-button {
   background-color: transparent;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -44,23 +44,23 @@
   line-height: 24px;
 }
 
-.new-todo__invalid {
+.create-todo__invalid {
   color: #e06666;
 }
 
-.new-todo input:focus,
-.new-todo textarea:focus {
+.create-todo input:focus,
+.create-todo textarea:focus {
   outline-color: #33c2d8;
 }
 
-.new-todo__file-btn {
+.create-todo__file-btn {
   margin: 6px 0;
   background-color: transparent;
   border: 1px solid #dddddd;
 }
 
 @media (max-width: 767px) {
-  .new-todo__submit {
+  .create-todo__submit {
     margin: 0 auto;
   }
 }

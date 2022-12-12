@@ -1,98 +1,99 @@
-.todo__item {
+.todo-item {
   min-height: 35px;
 
   border-bottom: 1px dashed #dddddd;
   padding: 6px 6px;
 }
 
-.todo__item:first-of-type {
+.todo-item:first-of-type {
   border-top: 1px dashed #dddddd;
 }
 
-.todo__item:last-of-type {
+.todo-item:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
 }
 
-.todo__item input,
-.todo__item textarea {
+.todo-item input,
+.todo-item textarea {
   display: block;
   padding: 6px;
   font-family: inherit;
   font-size: 16px;
   line-height: 24px;
-  border: none;
 }
 
-.todo__item input:last-of-type,
-.todo__item textarea:last-of-type {
+.todo-item input:last-of-type,
+.todo-item textarea:last-of-type {
   margin-bottom: 0;
 }
 
-.todo__item input:focus,
-.todo__item textarea:focus {
+.todo-item input:focus,
+.todo-item textarea:focus {
   outline-color: #33c2d8;
 }
 
-.todo__item-title::placeholder,
-.todo__item-text::placeholder,
-.todo__item-date::placeholder {
+.todo-item__title::placeholder,
+.todo-item__text::placeholder,
+.todo-item__date::placeholder {
   font-weight: 400;
   opacity: 0.3;
 }
 
-.todo__item-form {
+.todo-item__form {
   position: relative;
   display: grid;
   grid-template-columns: min-content repeat(2, auto);
   gap: 2px;
   justify-items: baseline;
   align-items: baseline;
-  padding-left: 20px;
 }
 
 @media (max-width: 767px) {
-  .todo__item-form {
+  .todo-item__form {
     display: flex;
     flex-direction: column;
   }
 }
 
-.todo__item-title {
+.todo-item__title {
   font-weight: 600;
   grid-column: 1;
   grid-row: 1;
+  border: none;
 }
 
-.todo__item-text {
+.todo-item__text {
   grid-column: 1;
   grid-row: 2;
+  border: none;
 }
 
-.todo__item-date {
+.todo-item__date {
   background-color: #ffffff;
-  border: 1xp solid #dddddd;
+  border-radius: 3px;
+  border: 1px solid #dddddd;
   grid-column: 2;
   grid-row: 1;
 }
 
-.todo__item-file {
+.todo-item__file {
   grid-column: 3;
   grid-row: 1;
 }
 
-.todo__item-error {
+.todo-item__error {
   grid-column: 2;
   grid-row: 2;
   color: #e06666;
 }
 
-.todo__item-remove {
+.todo-item__remove {
   grid-column: -1;
   grid-row: 1;
 }
 
-.todo__item-completed {
+.todo-item__completed {
   grid-column: -1;
   grid-row: 2;
 }
