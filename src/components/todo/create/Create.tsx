@@ -1,21 +1,17 @@
-import React, {FC, useState} from 'react';
-import {useTodos} from '../../hooks/useTodos';
-import {ITodos} from '../../types/types';
+import React, {useContext, useState} from 'react';
 import './style.css';
-import {storage} from '../../firebase';
 import {ref, uploadBytesResumable, getDownloadURL} from 'firebase/storage';
 
-interface NewTodoProps {
-  // todos: ITodos[] | [];
-  // setTodos: (todos: ITodos[] | []) => void;
-}
+import {storage} from '../../../firebase';
+import {TodosContextType} from '../../../types/types';
+import {TodosContext} from '../../../context/todos-context';
 
-export const NewTodo: FC<NewTodoProps> = () => {
-  const {postTodo, error, todos, setTodos} = useTodos();
+export const CreateTodo = () => {
   const [todo, setTodo] = useState({title: '', text: '', id: '', url: ''});
   const [date, setDate] = useState('');
   const [fileUpload, setFileUpload] = useState<File | undefined>();
   const [valid, setValid] = useState(true);
+  const {createTodo} = useContext(TodosContext) as TodosContextType;
 
   const uploadFile = (evt: React.MouseEvent<HTMLButtonElement>) => {
     evt.preventDefault();
@@ -27,7 +23,7 @@ export const NewTodo: FC<NewTodoProps> = () => {
 
       upload.on('state_changed', () => {
         getDownloadURL(upload.snapshot.ref).then((downloadURL) => {
-          console.log('File available at', downloadURL);
+          alert('File available at' + downloadURL);
           setTodo({...todo, url: downloadURL});
         });
       });
@@ -45,19 +41,18 @@ export const NewTodo: FC<NewTodoProps> = () => {
       return;
     }
 
-    // setTodos([...todos, {...todo, date: Date.parse(date)}]);
-    postTodo({...todo, date: Date.parse(date)});
+    createTodo({...todo, date: Date.parse(date)});
     setTodo({title: '', text: '', id: '', url: ''});
     setDate('');
   };
 
   return (
-    <div className='new-todo'>
+    <div className='create-todo'>
       <form>
         <input
           value={todo.title}
           onChange={(evt) => setTodo({...todo, title: evt.target.value})}
-          className='new-todo__input'
+          className='create-todo__input'
           type='text'
           placeholder='Назовите задачу'
           required
@@ -66,25 +61,25 @@ export const NewTodo: FC<NewTodoProps> = () => {
         <textarea
           value={todo.text}
           onChange={(evt) => setTodo({...todo, text: evt.target.value})}
-          className='new-todo__input'
+          className='create-todo__input'
           placeholder='Опишите задачу'
         />
 
         <input
-          className='new-todo__date'
+          className='create-todo__date'
           type='date'
           onChange={(evt) => setDate(evt.target.value)}
         />
 
-        <div className='new-todo__file-wrapper'>
+        <div className='create-todo__file-wrapper'>
           <input
-            className='new-todo__file'
+            className='create-todo__file'
             type='file'
             onChange={(evt) => setFileUpload(evt.target?.files?.[0])}
           />
           <button
             type='button'
-            className='btn new-todo__file-btn'
+            className='btn create-todo__file-btn'
             onClick={uploadFile}
           >
             Добавить файл
@@ -93,18 +88,16 @@ export const NewTodo: FC<NewTodoProps> = () => {
 
         <input
           value='Добавить задачу'
-          className='btn new-todo__submit'
+          className='btn create-todo__submit'
           type='submit'
           onClick={addNewTodo}
         />
 
         {!valid ? (
-          <p className='new-todo__invalid'>Введите название задачи</p>
+          <p className='create-todo__invalid'>Введите название задачи</p>
         ) : (
           ''
         )}
-
-        {error ? <p className='error'>Ошибка отправки</p> : ''}
       </form>
     </div>
   );

@@ -1,8 +1,6 @@
 import {initializeApp} from 'firebase/app';
 import {getStorage} from 'firebase/storage';
 
-console.log('process.env.REACT_APP_APP_ID', process.env.REACT_APP_APP_ID);
-
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
