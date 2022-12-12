@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {TodosContext} from '../../../context/todos-context';
-import {ITodos, TodosContextType} from '../../../types/types';
+import {TodosContextType} from '../../../types/types';
 import {TodoItem} from '../item/Item';
 import './style.css';
 

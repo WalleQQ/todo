@@ -47,17 +47,11 @@ const TodosProvider: React.FC<TodosProviderProps> = ({children}) => {
       url: todo.url,
     };
     const response = await dbInstance.post(`${userId}.json`, newTodo);
-    // postTodo(newTodo);
     setTodos([...todos, {...newTodo, id: response.data.name}]);
   };
 
   const updateTodo = async (id: string, todo: ITodos) => {
     await dbInstance.patch(`${userId}/${id}.json`, todo);
-    todos.filter((todo: ITodos) => {
-      if (todo.id === id) {
-        setTodos([...todos]);
-      }
-    });
   };
 
   const deleteTodo = async (id: string, todo: ITodos) => {
