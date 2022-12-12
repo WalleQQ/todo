@@ -18,23 +18,16 @@ const TodosProvider: React.FC<TodosProviderProps> = ({children}) => {
 
   const userId = localStorage.getItem('user');
 
-  const fetchTodos = async () => {
-    let result = [];
-    try {
+  useEffect(() => {
+    const fetchTodos = async () => {
+      let result = [];
       const response = await dbInstance.get<ITodos>(`${userId}.json`);
-
       for (const [key, value] of Object.entries(response.data)) {
         const obj = Object.assign({...value, id: key});
         result.push(obj);
       }
-
       setTodos(result);
-    } catch (e) {
-    } finally {
-    }
-  };
-
-  useEffect(() => {
+    };
     fetchTodos();
   }, []);
 
